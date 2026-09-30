@@ -12,8 +12,8 @@ fi
 
 zmodload -F zsh/files b:zf_mv
 () {
-  local TMPPREFIX="$ZSH_CACHE_DIR/completions/_kubectl"
-  zf_mv -f -- =( kubectl completion zsh 2> /dev/null ) "$TMPPREFIX"
+  local TMPPREFIX="$ZSH_CACHE_DIR/completions/._kubectl"
+  zf_mv -f -- =( kubectl completion zsh 2> /dev/null ) "$ZSH_CACHE_DIR/completions/_kubectl"
 } &|
 
 # This command is used a LOT both below and in daily life
@@ -36,6 +36,7 @@ alias kcuc='kubectl config use-context'
 alias kcsc='kubectl config set-context'
 alias kcdc='kubectl config delete-context'
 alias kccc='kubectl config current-context'
+alias kcrc='kubectl config rename-context'
 
 # List all contexts
 alias kcgc='kubectl config get-contexts'
@@ -93,6 +94,7 @@ alias kdelcm='kubectl delete configmap'
 # Secret management
 alias kgsec='kubectl get secret'
 alias kgseca='kubectl get secret --all-namespaces'
+alias kesec='kubectl edit secret'
 alias kdsec='kubectl describe secret'
 alias kdelsec='kubectl delete secret'
 
